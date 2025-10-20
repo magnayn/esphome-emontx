@@ -4,6 +4,7 @@
 #include "esphome.h"
 #include "esphome/components/uart/uart.h"
 
+namespace emontx {
 class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
    EmontxSensor(esphome::uart::UARTComponent* parent) : UARTDevice(parent) {}
@@ -30,5 +31,5 @@ public:
     int energy_in[4] = {0, 0, 0, 0};
     int energy_out[4] = {0, 0, 0, 0};
 };
-
+}
 #endif

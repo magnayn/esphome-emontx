@@ -3,7 +3,7 @@
 #include "esphome/core/log.h"
 
 static const char *const TAG = "power_meter";
-
+namespace emontx {
 void EmontxSensor::update() {
     while(available()) {
       uint8_t c = read();
@@ -83,4 +83,5 @@ bool EmonMessage::parse(const std::string& message) {
 		return false;
   //  Debugging.println(".. ok");
 	return true;
+}
 }
