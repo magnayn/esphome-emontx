@@ -3,6 +3,8 @@ import esphome.config_validation as cv
 from esphome.components import sensor, uart
 from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL
 
+DEPENDENCIES = ['uart']
+
 CONF_UART_ID = "uart_id"
 
 emontx_ns = cg.esphome_ns.namespace("emontx")
@@ -13,7 +15,7 @@ CONFIG_SCHEMA = (
     .extend(
         {
             cv.GenerateID(): cv.declare_id(EmontxSensor),
-            cv.Optional(CONF_UART_ID): cv.use_id(uart.UARTComponent),
+            cv.Required(CONF_UART_ID): cv.use_id(uart.UARTComponent),
             cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
         }
     )
