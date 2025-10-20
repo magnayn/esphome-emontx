@@ -6,7 +6,7 @@
 
 class Emontx : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
-   Emontx(UARTComponent* parent) : UARTDevice(parent) {}
+   Emontx(esphome::uart::UARTComponent* parent) : UARTDevice(parent) {}
 
    void setup() override {
 
