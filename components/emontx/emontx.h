@@ -7,7 +7,7 @@
 namespace emontx {
 class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
-   EmontxSensor(esphome::uart::UARTComponent* parent) : UARTDevice(parent) {}
+   EmontxSensor() {}
 
    void setup() override {
 
