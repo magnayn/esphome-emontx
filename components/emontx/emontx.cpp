@@ -4,14 +4,14 @@
 
 static const char *const TAG = "power_meter";
 
-void Emontx::update() {
+void Emontx::update() override {
     while(available()) {
       uint8_t c = read();
       parse_byte(c);  // Your decoding logic
     }
 }
 
-void Emontx::parse_byte(uint8+t c) {
+void Emontx::parse_byte(uint8_t c) override {
     static std::string buffer;
 
     if (c == '\n') {
@@ -28,7 +28,7 @@ void Emontx::parse_byte(uint8+t c) {
 }
 
 /// Message
-bool EmonMessage::parse(std::string& msg) {
+bool EmonMessage::parse(const std::string& msg) {
     if (!message.startsWith("MSG:"))
 		return false;
 

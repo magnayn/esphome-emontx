@@ -2,11 +2,11 @@
 #define __EMONTX_H__
 
 #include "esphome.h"
-
+#include "esphome/components/uart/uart.h"
 
 class Emontx : public PollingComponent, public UARTDevice {
    public:
-   Emontx(UArTComponent* parent) : UARTDevice(paremt) {}
+   Emontx(UARTComponent* parent) : UARTDevice(paremt) {}
 
    void setup() override {
 
@@ -15,9 +15,9 @@ class Emontx : public PollingComponent, public UARTDevice {
    void update() override;
 
    private:
-    void parse_byte(uint8+t c);
+    void parse_byte(uint8_t c);
 
-}
+};
 
 class EmonMessage
 {
