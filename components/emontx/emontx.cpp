@@ -11,7 +11,7 @@ void Emontx::update() override {
     }
 }
 
-void Emontx::parse_byte(uint8_t c) override {
+void Emontx::parse_byte(uint8_t c)  {
     static std::string buffer;
 
     if (c == '\n') {
@@ -28,11 +28,11 @@ void Emontx::parse_byte(uint8_t c) override {
 }
 
 /// Message
-bool EmonMessage::parse(const std::string& msg) {
+bool EmonMessage::parse(const std::string& message) {
     if (!message.startsWith("MSG:"))
 		return false;
 
-    ESP_LOGI(TAG, "PowerMeter parse %s", msg.c_str());
+    ESP_LOGI(TAG, "PowerMeter parse %s", message.c_str());
 	
 
 	int l1 = message.length();
