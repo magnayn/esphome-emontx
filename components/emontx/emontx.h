@@ -4,9 +4,9 @@
 #include "esphome.h"
 #include "esphome/components/uart/uart.h"
 
-class Emontx : public esphome::PollingComponent, public esphome::uart::UARTDevice {
+class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
-   Emontx(esphome::uart::UARTComponent* parent) : UARTDevice(parent) {}
+   EmontxSensor(esphome::uart::UARTComponent* parent) : UARTDevice(parent) {}
 
    void setup() override {
 
