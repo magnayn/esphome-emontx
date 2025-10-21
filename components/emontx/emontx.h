@@ -13,8 +13,18 @@ class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UAR
 
    void update() override;
 
+
+    // Setters
+    // Setter for voltage sensor
+    void set_voltage_sensor(esphome::sensor::Sensor *sensor) { voltage_sensor_ = sensor; }
+
+
    private:
     void parse_byte(uint8_t c);
+    vpid publish(const EmonMessage& message);)
+
+
+    esphome::sensor::Sensor *voltage_sensor_ = nullptr;
 
 };
 
