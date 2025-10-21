@@ -27,6 +27,9 @@ void EmontxSensor::parse_byte(uint8_t c)  {
 	ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
 
     if (c == '\n') {
+		// Null terminate?
+		buffer.push_back(0);
+		
         EmonMessage msg;
         if( msg.parse(buffer) ) {
             ESP_LOGI(TAG, "PowerMeter parse success");
