@@ -24,10 +24,12 @@ void EmontxSensor::update() {
 void EmontxSensor::parse_byte(uint8_t c)  {
     static std::string buffer;
 	ESP_LOGW(TAG, "CHAR %d", c);
-	
-	//ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
 
-    if (c == '\n') {
+	//ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
+	if( c == '\r') {
+		// ignore
+	}
+    else if (c == '\n') {
 		// Null terminate?
 		//buffer.push_back(0);
 
@@ -37,7 +39,7 @@ void EmontxSensor::parse_byte(uint8_t c)  {
         if( msg.parse(buffer) ) {
             ESP_LOGI(TAG, "PowerMeter parse success");
 			ESP_LOGI(TAG, "SEQ %d", msg.msg_seq);
-			ESP_LOGI(TAG, "V %d", msg.v);
+			ESP_LOGI(TAG, "V %f", msg.v);
 
 			for( int i=0; i<4; i++ ) {
 				ESP_LOGI(TAG, "%d: %d %d %d", i, msg.power[i], msg.energy_in[i], msg.energy_out[i]);
