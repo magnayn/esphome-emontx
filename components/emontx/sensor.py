@@ -30,7 +30,7 @@ CONFIG_SCHEMA = (
             cv.Required(CONF_UART_ID): cv.use_id(uart.UARTComponent),
             cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
             cv.Optional(CONF_VOLTAGE_SENSOR): cv.use_id(sensor.Sensor),
-            cv.Optional(CONF_CHANNELS): cv.Schema({
+            cv.Optional(CONF_CHANNELS, default={}): cv.Schema({
         cv.Optional("channel1"): channel_schema,
         cv.Optional("channel2"): channel_schema,
         cv.Optional("channel3"): channel_schema,
