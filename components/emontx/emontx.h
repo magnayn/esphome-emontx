@@ -9,9 +9,7 @@ class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UAR
    public:
    EmontxSensor();
 
-   void setup() override {
-
-   }
+   void setup() override;
 
    void update() override;
 

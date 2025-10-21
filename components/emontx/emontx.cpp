@@ -6,7 +6,11 @@ static const char *const TAG = "power_meter";
 namespace emontx {
 
 EmontxSensor::EmontxSensor() {
-	ESP_LOGI(TAG, "PowerMeter START");
+	ESP_LOGI(TAG, "PowerMeter Construct");
+}
+
+void EmontxSensor::setup() {
+    ESP_LOGI(TAG, "PowerMeter SETUP");
 }
 
 void EmontxSensor::update() {
