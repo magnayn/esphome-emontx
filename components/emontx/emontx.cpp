@@ -24,16 +24,24 @@ void EmontxSensor::update() {
 void EmontxSensor::parse_byte(uint8_t c)  {
     static std::string buffer;
 
-	ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
+	//ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
 
     if (c == '\n') {
 		// Null terminate?
-		buffer.push_back(0);
+		//buffer.push_back(0);
+
+		ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
 
         EmonMessage msg;
         if( msg.parse(buffer) ) {
             ESP_LOGI(TAG, "PowerMeter parse success");
 			ESP_LOGI(TAG, "SEQ %d", msg.msg_seq);
+			ESP_LOGI(TAG, "V %d", msg.v);
+
+			for( int i=0; i<4; i++ ) {
+				ESP_LOGI(TAG, "%d: %d %d %d", i, msg.power[i], msg.energy_in[i], msg.energy_out[i]);
+			}
+
         }
 		else {
 			ESP_LOGI(TAG, "PowerMeter parse rejected");
