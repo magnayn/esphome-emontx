@@ -7,7 +7,7 @@
 namespace emontx {
 class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
-   EmontxSensor() {}
+   EmontxSensor();
 
    void setup() override {
 
