@@ -6,15 +6,15 @@ static const char *const TAG = "emontx";
 namespace emontx {
 
 EmontxSensor::EmontxSensor() {
-	ESP_LOGI(TAG, "PowerMeter Construct");
+	
 }
 
 void EmontxSensor::setup() {
-    ESP_LOGI(TAG, "PowerMeter SETUP");
+    
 }
 
 void EmontxSensor::update() {
-	 ESP_LOGI(TAG, "PowerMeter UPDATE");
+	ESP_LOGI(TAG, "PowerMeter UPDATE");
     while(available()) {
       uint8_t c = read();
       parse_byte(c);  // Your decoding logic
@@ -24,11 +24,16 @@ void EmontxSensor::update() {
 void EmontxSensor::parse_byte(uint8_t c)  {
     static std::string buffer;
 
+	ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
+
     if (c == '\n') {
         EmonMessage msg;
         if( msg.parse(buffer) ) {
             ESP_LOGI(TAG, "PowerMeter parse success");
         }
+		else {
+			ESP_LOGI(TAG, "PowerMeter parse rejected");
+		}
 
 
         buffer.clear();
