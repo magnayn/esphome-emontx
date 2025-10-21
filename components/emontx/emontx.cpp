@@ -62,6 +62,11 @@ void EmontxSensor::publish(const EmonMessage& msg) {
 		ESP_LOGD(TAG, "%d: %d %d %d", i, msg.power[i], msg.energy_in[i], msg.energy_out[i]);
 	}
 
+	channel1.publish(msg.power[0], msg.energy_in[0], msg.energy_out[0]);
+	channel2.publish(msg.power[1], msg.energy_in[1], msg.energy_out[1]);
+	channel3.publish(msg.power[2], msg.energy_in[2], msg.energy_out[2]);
+	channel4.publish(msg.power[3], msg.energy_in[3], msg.energy_out[3]);
+
 	if (voltage_sensor_ != nullptr) {
       voltage_sensor_->publish_state(msg.v);
     }
