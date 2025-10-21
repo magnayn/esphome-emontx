@@ -29,10 +29,11 @@ void EmontxSensor::parse_byte(uint8_t c)  {
     if (c == '\n') {
 		// Null terminate?
 		buffer.push_back(0);
-		
+
         EmonMessage msg;
         if( msg.parse(buffer) ) {
             ESP_LOGI(TAG, "PowerMeter parse success");
+			ESP_LOGI(TAG, "SEQ %d", msg.msg_seq);
         }
 		else {
 			ESP_LOGI(TAG, "PowerMeter parse rejected");
@@ -50,11 +51,14 @@ bool EmonMessage::parse(const std::string& message) {
     if (!message.starts_with("MSG:"))
 		return false;
 
-    ESP_LOGI(TAG, "PowerMeter parse %s.", message.c_str());
+    ESP_LOGI(TAG, "PowerMeter parse '%s'.", message.c_str());
 	
 
 	int l1 = message.length();
 	int l2 = strlen(message.c_str());
+
+	ESP_LOGI(TAG, "L1 %d L2 %d", l1, l2);
+	
 
 //	Serial.printf("L1 %d\n L2 %d\n", l1, l2);
 
