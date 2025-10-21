@@ -22,6 +22,9 @@ CONFIG_SCHEMA = (
             cv.Required(CONF_UART_ID): cv.use_id(uart.UARTComponent),
             cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
             cv.Optional(CONF_VOLTAGE_SENSOR): cv.use_id(sensor.Sensor),
+            cv.Optional(CONF_CHANNEL1_WATT): cv.use_id(sensor.Sensor),
+            cv.Optional(CONF_CHANNEL1_IN): cv.use_id(sensor.Sensor),
+            cv.Optional(CONF_CHANNEL1_OUT): cv.use_id(sensor.Sensor),
         }
     )
     .extend(uart.UART_DEVICE_SCHEMA)
