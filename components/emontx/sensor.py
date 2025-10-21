@@ -51,13 +51,14 @@ async def to_code(config):
         cg.add(var.set_voltage_sensor(sens))
 
     for i, channel_name in enumerate(["channel1", "channel2", "channel3", "channel4"]):
-        channel_conf = config[CONF_CHANNELS][channel_name]
-        if CONF_WATT in channel_conf:
-            sens = await cg.get_variable(channel_conf[CONF_WATT])
-            cg.add(var.channels[i].set_power_sensor(sens))
-        if CONF_ENERGY_IN in channel_conf:
-            sens = await cg.get_variable(channel_conf[CONF_ENERGY_IN])
-            cg.add(var.channels[i].set_energy_in_sensor(sens))
-        if CONF_ENERGY_OUT in channel_conf:
-            sens = await cg.get_variable(channel_conf[CONF_ENERGY_OUT])
-            cg.add(var.channels[i].set_energy_out_sensor(sens))
+        if channel_name in config[CONF_CHANNELS]:
+            channel_conf = config[CONF_CHANNELS][channel_name]
+            if CONF_WATT in channel_conf:
+                sens = await cg.get_variable(channel_conf[CONF_WATT])
+                cg.add(var.channels[i].set_power_sensor(sens))
+            if CONF_ENERGY_IN in channel_conf:
+                sens = await cg.get_variable(channel_conf[CONF_ENERGY_IN])
+                cg.add(var.channels[i].set_energy_in_sensor(sens))
+            if CONF_ENERGY_OUT in channel_conf:
+                sens = await cg.get_variable(channel_conf[CONF_ENERGY_OUT])
+                cg.add(var.channels[i].set_energy_out_sensor(sens))
