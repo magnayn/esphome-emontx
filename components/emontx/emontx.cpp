@@ -54,7 +54,7 @@ void EmontxSensor::parse_byte(uint8_t c)  {
     }
 }
 
-vpid EmontxSensor::publish(const EmonMessage& message) {
+void EmontxSensor::publish(const EmonMessage& message) {
 	ESP_LOGD(TAG, "SEQ %d", msg.msg_seq);
 	ESP_LOGD(TAG, "V %f", msg.v);
 

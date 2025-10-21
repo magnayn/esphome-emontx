@@ -21,7 +21,7 @@ class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UAR
 
    private:
     void parse_byte(uint8_t c);
-    vpid publish(const EmonMessage& message);)
+    void publish(const EmonMessage& message);)
 
 
     esphome::sensor::Sensor *voltage_sensor_ = nullptr;
