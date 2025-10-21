@@ -23,7 +23,8 @@ void EmontxSensor::update() {
 
 void EmontxSensor::parse_byte(uint8_t c)  {
     static std::string buffer;
-
+	ESP_LOGW(TAG, "CHAR %d", c);
+	
 	//ESP_LOGW(TAG, "BUF: %s", buffer.c_str());
 
     if (c == '\n') {
