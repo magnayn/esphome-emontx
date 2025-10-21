@@ -5,6 +5,19 @@
 #include "esphome/components/uart/uart.h"
 
 namespace emontx {
+
+class EmonMessage
+{
+public:
+    bool parse(const std::string &str);
+
+    int msg_seq = 0;
+    float v = 0;
+    int power[4] = {0, 0, 0, 0};
+    int energy_in[4] = {0, 0, 0, 0};
+    int energy_out[4] = {0, 0, 0, 0};
+};
+
 class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
    EmontxSensor();
@@ -28,16 +41,6 @@ class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UAR
 
 };
 
-class EmonMessage
-{
-public:
-    bool parse(const std::string &str);
 
-    int msg_seq = 0;
-    float v = 0;
-    int power[4] = {0, 0, 0, 0};
-    int energy_in[4] = {0, 0, 0, 0};
-    int energy_out[4] = {0, 0, 0, 0};
-};
 }
 #endif
