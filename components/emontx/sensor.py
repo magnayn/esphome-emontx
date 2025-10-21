@@ -17,9 +17,9 @@ emontx_ns = cg.esphome_ns.namespace("emontx")
 EmontxSensor = emontx_ns.class_("EmontxSensor", cg.PollingComponent, uart.UARTDevice)
 
 channel_schema = cv.Schema({
-    cv.Optional(CONF_WATT): sensor.sensor_schema(unit_of_measurement="W"),
-    cv.Optional(CONF_ENERGY_IN): sensor.sensor_schema(unit_of_measurement="Wh"),
-    cv.Optional(CONF_ENERGY_OUT): sensor.sensor_schema(unit_of_measurement="Wh"),
+    cv.Optional(CONF_WATT): cv.use_id(sensor.Sensor),
+    cv.Optional(CONF_ENERGY_IN): cv.use_id(sensor.Sensor),
+    cv.Optional(CONF_ENERGY_OUT): cv.use_id(sensor.Sensor)
 })
 
 
