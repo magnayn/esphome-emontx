@@ -42,11 +42,8 @@ private:
 class EmontxSensor : public esphome::PollingComponent, public esphome::uart::UARTDevice {
    public:
 
-    EmontxChannel channel1;
-    EmontxChannel channel2;
-    EmontxChannel channel3;
-    EmontxChannel channel4;
-
+    EmontxChannel channels[4];
+    
    EmontxSensor();
 
    void setup() override;
