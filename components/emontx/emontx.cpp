@@ -47,7 +47,7 @@ bool EmonMessage::parse(const std::string& message) {
     if (!message.starts_with("MSG:"))
 		return false;
 
-    ESP_LOGI(TAG, "PowerMeter parse %s", message.c_str());
+    ESP_LOGI(TAG, "PowerMeter parse %s.", message.c_str());
 	
 
 	int l1 = message.length();
