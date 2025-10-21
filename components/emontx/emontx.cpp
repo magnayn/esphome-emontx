@@ -2,7 +2,7 @@
 #include "emontx.h"
 #include "esphome/core/log.h"
 
-static const char *const TAG = "power_meter";
+static const char *const TAG = "emontx";
 namespace emontx {
 
 EmontxSensor::EmontxSensor() {
