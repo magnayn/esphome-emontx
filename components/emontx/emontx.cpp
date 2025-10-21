@@ -14,6 +14,7 @@ void EmontxSensor::setup() {
 }
 
 void EmontxSensor::update() {
+	 ESP_LOGI(TAG, "PowerMeter UPDATE");
     while(available()) {
       uint8_t c = read();
       parse_byte(c);  // Your decoding logic
