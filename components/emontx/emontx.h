@@ -27,7 +27,7 @@ public:
     void set_energy_out_sensor(esphome::sensor::Sensor *s) { energy_out_sensor_ = s; }
 
     void publish(int watt, int in, int out) {
-        if (watt_sensor_) watt_sensor_->publish_state(watt);
+        if (power_sensor_) power_sensor_->publish_state(watt);
         if (energy_in_sensor_) energy_in_sensor_->publish_state(in);
         if (energy_out_sensor_) energy_out_sensor_->publish_state(out);
     }
