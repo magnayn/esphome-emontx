@@ -41,7 +41,7 @@ async def to_code(config):
 
     if CONF_CHANNEL1_WATT in config:
         sens = await cg.get_variable(config[CONF_CHANNEL1_WATT])
-        cg.add(var.channel1.set_watt_sensor(sens))
+        cg.add(var.channel1.set_power_sensor(sens))
 
     if CONF_CHANNEL1_IN in config:
         sens = await cg.get_variable(config[CONF_CHANNEL1_IN])
