@@ -60,7 +60,7 @@ void EmontxSensor::publish(const EmonMessage& msg) {
 
 	for( int i=0; i<4; i++ ) {
 		ESP_LOGD(TAG, "%d: %d %d %d", i, msg.power[i], msg.energy_in[i], msg.energy_out[i]);
-		channel[i].publish(msg.power[i], msg.energy_in[i], msg.energy_out[i]);
+		channels[i].publish(msg.power[i], msg.energy_in[i], msg.energy_out[i]);
 	}
 
 	
